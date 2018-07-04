@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="worldModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Country_id" />
+          </Key>
+          <Property Name="Country_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Continent" Type="varchar" MaxLength="50" />
+          <Property Name="Region_id" Type="int" Nullable="false" />
+          <Property Name="Surface_Area" Type="float" />
+          <Property Name="Indep_Year" Type="int" />
+          <Property Name="Population" Type="int" />
+          <Property Name="Life_Expectancy" Type="float" />
+          <Property Name="GNP" Type="float" />
+          <Property Name="GNPOld" Type="float" />
+          <Property Name="Local_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Government_Form" Type="varchar" MaxLength="50" />
+          <Property Name="Head_Of_State" Type="varchar" MaxLength="50" />
+          <Property Name="Capital" Type="int" />
+          <Property Name="Code2" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Region_id" />
+          </Key>
+          <Property Name="Region_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Region" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Country_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Region_id" />
+            </Principal>
+            <Dependent Role="Country">
+              <PropertyRef Name="Region_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="worldModelStoreContainer">
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Country_Region" Association="Self.FK_Country_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Country" EntitySet="Country" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="worldModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Country_id" />
+          </Key>
+          <Property Name="Country_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Continent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Region_id" Type="Int32" Nullable="false" />
+          <Property Name="Surface_Area" Type="Double" />
+          <Property Name="Indep_Year" Type="Int32" />
+          <Property Name="Population" Type="Int32" />
+          <Property Name="Life_Expectancy" Type="Double" />
+          <Property Name="GNP" Type="Double" />
+          <Property Name="GNPOld" Type="Double" />
+          <Property Name="Local_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Government_Form" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Head_Of_State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Capital" Type="Int32" />
+          <Property Name="Code2" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Region" Relationship="Self.FK_Country_Region" FromRole="Country" ToRole="Region" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Region_id" />
+          </Key>
+          <Property Name="Region_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Region1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Country_Region" FromRole="Region" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Country_Region">
+          <End Role="Region" Type="Self.Region" Multiplicity="1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Region_id" />
+            </Principal>
+            <Dependent Role="Country">
+              <PropertyRef Name="Region_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="worldEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="Region" EntityType="Self.Region" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Country_Region" Association="Self.FK_Country_Region">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Country" EntitySet="Country" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="worldModelStoreContainer" CdmEntityContainer="worldEntities">
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="worldModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Country_id" ColumnName="Country_id" />
+                <ScalarProperty Name="Country1" ColumnName="Country" />
+                <ScalarProperty Name="Continent" ColumnName="Continent" />
+                <ScalarProperty Name="Region_id" ColumnName="Region_id" />
+                <ScalarProperty Name="Surface_Area" ColumnName="Surface_Area" />
+                <ScalarProperty Name="Indep_Year" ColumnName="Indep_Year" />
+                <ScalarProperty Name="Population" ColumnName="Population" />
+                <ScalarProperty Name="Life_Expectancy" ColumnName="Life_Expectancy" />
+                <ScalarProperty Name="GNP" ColumnName="GNP" />
+                <ScalarProperty Name="GNPOld" ColumnName="GNPOld" />
+                <ScalarProperty Name="Local_Name" ColumnName="Local_Name" />
+                <ScalarProperty Name="Government_Form" ColumnName="Government_Form" />
+                <ScalarProperty Name="Head_Of_State" ColumnName="Head_Of_State" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
+                <ScalarProperty Name="Code2" ColumnName="Code2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Region">
+            <EntityTypeMapping TypeName="worldModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="Region_id" ColumnName="Region_id" />
+                <ScalarProperty Name="Region1" ColumnName="Region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="worldModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
