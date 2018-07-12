@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="66406b1db7a64d1fb8ec468cf35598b1" Name="Diagram1">
+        <EntityTypeShape EntityType="raihMimpiModel.FOTO" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel.KATEGORI" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel.KOMENTAR" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel.LOGIN" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel.PENCAIRANDANA" Width="1.5" PointX="6" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel.PENGGUNA" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel.PERAN" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel.PROGRESPROJEK" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel.PROJEK" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel.RELATIONSHIP_12" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel.SPONSOR" Width="1.5" PointX="8.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel.VIDEO" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel.WILAYAH" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="raihMimpiModel.FK_FOTO_PROGRESPROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_FOTO_PROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_RELATIONSHIP_12_TAGKATEGORI" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_KOMENTAR_PENGGUNA" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_KOMENTAR_PROGRESPROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_KOMENTAR_PROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_LOGIN_PERAN1" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_PENCAIRANDANA_PENGGUNA" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_PENCAIRANDANA_PROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_PROJEK_PENGGUNA" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_SPONSOR_PENGGUNA" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_PROGRESPROJEK_PROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_VIDEO_PROJEK_PROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_PROJEK_WILAYAH" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_RELATIONSHIP_12_PROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_SPONSOR_PROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel.FK_VIDEO_PROJEK_PROJEK1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

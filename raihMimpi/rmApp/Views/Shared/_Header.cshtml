@@ -1,0 +1,86 @@
+﻿@using rmApp.Models
+@model rmApp.Models.LOGIN
+@{ var peran = (PERAN)ViewData["peran"];}
+<header class="main-header">
+    @* BEGIN Logo *@
+    <a href="@Url.Action("Index", "Home")" class="logo">
+        @* Mini logo for sidebar 50x50 pixels *@
+        <img src="~/Content/Theme/img/logo-lg.png" style="margin-left:-10px;">&nbsp;&nbsp;<strong><b>Raih&nbsp;</b>Mimpi</strong>
+    </a>
+    @* END Logo *@
+    @* BEGIN Header *@
+    <nav class="navbar navbar-static-top" role="navigation">
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
+                </div>
+            </form>
+        </div>
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                @* BEGIN Notifications *@
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning">10</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 10 notifications</li>
+                        <li>
+                            <ul class="menu">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="#">View all</a></li>
+                    </ul>
+                </li>
+                @* END Notifications *@
+                @* BEGIN User Account Menu *@
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="~/Content/Theme/img/user.png" class="user-image" alt="User Image">
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="user-header">
+                            <img src="~/Content/Theme/img/user.png" class="user-image" alt="User Image">
+                            <p>
+                                @{
+                                    if (Model != null)
+                                    {
+                                        @Model.EMAIL
+                                    }
+                                }
+                                <small>
+                                @{
+                                    if (peran != null)
+                                    {
+                                        @peran.PERAN1
+                                    }
+                                }
+                                </small>
+                            </p>
+                        </li>
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="@Url.Action("LOGIN", "Home")" class="btn btn-default btn-flat">Sign out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                @* END User Account Menu *@
+            </ul>
+        </div>
+    </nav>
+</header>

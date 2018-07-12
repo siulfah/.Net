@@ -1,0 +1,107 @@
+﻿@model rmApp.Models.SPONSOR
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SPONSOR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JUMLAH_SPONSOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JUMLAH_SPONSOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_BANK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_BANK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATE_BY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATE_BY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATE_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATE_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UPDATE_BY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPDATE_BY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UPDATE_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPDATE_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANONIM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANONIM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KETERANGAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KETERANGAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATUS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PENGGUNA.NAMA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PENGGUNA.NAMA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROJEK.NAMA_PROYEK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROJEK.NAMA_PROYEK)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_SPONSOR }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

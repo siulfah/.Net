@@ -1,0 +1,185 @@
+﻿@model rmApp.Models.PROJEK
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PROJEK</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_KATEGORI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_KATEGORI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NAMA_PROYEK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAMA_PROYEK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESKRIPSI_SINGKAT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESKRIPSI_SINGKAT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESKRIPSI_LENGKAP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESKRIPSI_LENGKAP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LINK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LINK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STATUS_PROYEK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATUS_PROYEK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TANGGAL_BERAKHIR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TANGGAL_BERAKHIR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TARGET_DANA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TARGET_DANA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FITUR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FITUR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SUKA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SUKA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATE_BY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATE_BY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATE_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATE_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UPDATE_BY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPDATE_BY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UPDATE_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPDATE_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KOMISI_FLAT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KOMISI_FLAT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KOMISI_PERSEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KOMISI_PERSEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TOTAL_DANA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TOTAL_DANA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KETERANGAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KETERANGAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PENGGUNA.NAMA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PENGGUNA.NAMA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WILAYAH.NAMA_WILAYAH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WILAYAH.NAMA_WILAYAH)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

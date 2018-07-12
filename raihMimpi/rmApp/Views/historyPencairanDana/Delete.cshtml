@@ -1,0 +1,129 @@
+﻿@model rmApp.Models.PENCAIRANDANA
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PENCAIRANDANA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_PENGGUNA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_PENGGUNA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NAMA_KEGIATAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAMA_KEGIATAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JUMLAH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JUMLAH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NAMA_PENCAIR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAMA_PENCAIR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NO_REKENING)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NO_REKENING)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATUS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATE_BY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATE_BY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATE_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATE_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UPDATE_BY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPDATE_BY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UPDATE_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPDATE_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KETERANGAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KETERANGAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PENGGUNA.NAMA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PENGGUNA.NAMA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROJEK.NAMA_PROYEK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROJEK.NAMA_PROYEK)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

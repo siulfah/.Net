@@ -1,0 +1,109 @@
+﻿@model IEnumerable<rmApp.Models.LOGIN>
+
+@{
+    ViewBag.Title = "Kelola Akun";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/buttons.dataTables.min.css">
+<script type="text/javascript" src="~/Scripts/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.getJSON("http://localhost:65067/api/myVerifikasi", function (json) {
+            console.log(json);
+            var myData = [];
+
+            $.each(json, function (index, row) {
+                myData[index] = [
+                    row.USERNAME,
+                    row.EMAIL,
+                    row.ID_PERAN,
+                    row.STATUS,
+                    row.ID_LOGIN
+                ]
+            });
+            $('#myTable').DataTable({
+                data: myData,
+                "columnDefs": [
+                    {
+                        "render": function (data, type, row) {
+                            if (row[2] == 1) {
+                                return "Admin";
+                            } else {
+                                return "Pengguna";
+                            }
+                        },
+                        "targets": 2
+                    },
+                    {
+                        "render": function (data, type, row) {
+                            if (row[3] == true) {
+                                return "Active";
+                            } else {
+                                return "Non-Active";
+                            }
+                        },
+                        "targets": 3
+                    },
+                    {
+                        "render": function (data, type, row) {
+                            return '<botton class="btn btn-view" id="' + row[4] + '"><i class="fa fa-search-plus"></i></botton><botton class="btn btn-edit" id="' + row[4] + '" title="Klik Untuk Mengaktifkan Akun"><i class="fa fa-user-plus"></i></botton><botton class="btn btn-delete" id="' + row[4] + '" title="Klik Untuk Non-aktifkan Akun"><i class="fa fa-user-times"></i></botton>';
+                        },
+                        "targets": 4
+                    }
+                ]
+                //,
+                //dom: 'Bfrtip',
+                //buttons: [
+                //    'copy', 'csv', 'excel', 'pdf', 'print'
+                //]
+            });
+        });
+    });
+</script>
+<br />
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.USERNAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMAIL)
+            </th>
+            <th>
+                PERAN
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.STATUS)
+            </th>
+            <th>AKSI</th>
+        </tr>
+    </thead>
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("click", ".btn-view", function () {
+            var id = $(this).attr("id");
+            window.location.href = "@Url.Content("verifikasiAkun/Details/")" + id;
+        });
+        $(document).on("click", ".btn-edit", function () {
+            var id = $(this).attr("id");
+            if (confirm("Apakah Anda Yakin untuk Mengaktifkan Akun?")) {
+                window.location.href = "@Url.Content("verifikasiAkun/Aktif/")" + id;
+            }
+            return
+        });
+        $(document).on("click", ".btn-delete", function () {
+            var id = $(this).attr("id");
+            if (confirm("Apakah Anda Yakin untuk Non-Aktifkan Akun?")) {
+                window.location.href = "@Url.Content("verifikasiAkun/Delete/")" + id;
+            }
+            return
+        });
+    });
+
+</script>

@@ -1,0 +1,88 @@
+﻿@model rmApp.Models.PROJEK
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="box box-primary">
+    <!-- /.box-header -->
+    <div class="box-body">
+        <strong>NAMA PROYEK </strong>
+        <p class="text-muted">
+            @Model.NAMA_PROYEK
+        </p>
+        <hr>
+        <strong>CREATOR</strong>
+        <p>
+            @Model.PENGGUNA.NAMA
+        </p>
+        <hr>
+        <strong>WILAYAH</strong>
+        <p>
+            @Model.WILAYAH.NAMA_WILAYAH
+        </p>
+        <hr>
+        <strong>DESKRIPSI SINGKAT </strong>
+        <p class="text-muted">
+            @Model.DESKRIPSI_SINGKAT
+        </p>
+        <hr>
+        <strong>DESKRIPSI LENGKAP </strong>
+        <p>
+            @Model.DESKRIPSI_LENGKAP
+        </p>
+        <hr>
+        <strong>LINK</strong>
+        <p>
+            @Model.LINK
+        </p>
+        <hr>
+        <strong>STATUS</strong>
+        @if (@Model.STATUS_PROYEK == true)
+        {
+        <p>
+            Aktif
+        </p>}
+        <hr>
+        <strong>TANGGAL MULAI PROYEK</strong>
+        <p>
+            @Model.CREATE_DATE
+        </p>
+        <hr>
+        <strong>TANGGAL BERAKHIR</strong>
+        <p>
+            @Model.TANGGAL_BERAKHIR
+        </p>
+        <hr>
+        <strong>TARGET DANA</strong>
+        <p>
+            @Model.TARGET_DANA
+        </p>
+        <hr>
+        <strong>KOMISI FLAT</strong>
+        <p>
+            @Model.KOMISI_FLAT
+        </p>
+        <hr>
+        <strong>KOMISI PERSEN</strong>
+        <p>
+            @Model.KOMISI_PERSEN
+        </p>
+        <hr>
+        <strong>TOTAL DANA</strong>
+        <p>
+            @Model.TOTAL_DANA
+        </p>
+        <hr>
+        <strong>SISA DANA</strong>
+        <p>
+            @Model.SISA_DANA
+        </p>
+    </div>
+    <!-- /.box-body -->
+</div>
+<p>
+    < @Html.ActionLink("Back to List", "Index") >
+</p>

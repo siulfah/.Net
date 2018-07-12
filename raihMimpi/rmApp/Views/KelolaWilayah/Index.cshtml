@@ -1,0 +1,112 @@
+﻿@model IEnumerable<rmApp.Models.WILAYAH>
+
+@{
+    ViewBag.Title = "Kelola Data Wilayah";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/buttons.dataTables.min.css">
+<script type="text/javascript" src="~/Scripts/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.getJSON("http://localhost:65067/api/myWilayah", function (json) {
+            console.log(json);
+            var myData = [];
+
+            $.each(json, function (index, row) {
+                myData[index] = [
+                    row.NAMA_WILAYAH,
+                    row.ID_WILAYAH
+                ]
+            });
+            $('#myTable').DataTable({
+                data: myData,
+                "columnDefs": [
+                    {
+                        "render": function (data, type, row) {
+                            return '<botton class="btn btn-view" id="' + row[1] + '"><i class="fa fa-search-plus"></i></botton><botton class="btn btn-edit" id="' + row[1] + '" title="Klik Untuk Mengubah Data Wilayah"><i class="fa fa-edit"></i></botton><botton class="btn btn-delete" id="' + row[1] + '" title="Klik Untuk Menghapus Data Wilayah"><i class="fa fa-trash"></i></botton>';
+                        },
+                        "targets": 1
+                    }
+                ]
+            });
+        });
+    });
+</script>
+<br />
+
+
+@*<div class="container">
+    <div class="col-md-6 col-md-offset-3">
+        <button id="btnAddField">Add Field</button>
+
+        @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group" id="fields">
+            @Html.LabelFor(model =NAMA_WILAYAH, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(@Model.NAMA_WILAYAH, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NAMA_WILAYAH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <button>Submit</button>
+}
+
+
+        <div style="color:blue"><b>Data:</b> @ViewBag.Data</div>
+    </div>
+</div>*@
+
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NAMA_WILAYAH)
+            </th>
+            <th>AKSI</th>
+        </tr>
+    </thead>
+</table>
+
+
+<!-- JS includes -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var $fields = $('#fields');
+        $('#btnAddField').click(function (e) {
+            e.preventDefault();
+            $('<input type="text" name="dynamicField" /><br/>').appendTo($fields);
+        });
+    });
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("click", ".btn-view", function () {
+            var id = $(this).attr("id");
+            window.location.href = "@Url.Content("KelolaWilayah/Details/")" + id;
+        });
+        $(document).on("click", ".btn-edit", function () {
+            var id = $(this).attr("id");
+            window.location.href = "@Url.Content("KelolaWilayah/Edit/")" + id;
+        });
+        $(document).on("click", ".btn-delete", function () {
+            var id = $(this).attr("id");
+            if (confirm("Apakah Anda Yakin untuk Menghapus Data?")) {
+                window.location.href = "@Url.Content("KelolaWilayah/Delete/")" + id;
+            }
+            return
+        });
+    });
+
+</script>

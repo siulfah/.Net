@@ -1,0 +1,48 @@
+﻿@model IEnumerable<rmApp.Models.PERAN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/buttons.dataTables.min.css">
+<script type="text/javascript" src="~/Scripts/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.getJSON("http://localhost:65067/api/myRole", function (json) {
+            console.log(json);
+            var myData = [];
+
+            $.each(json, function (index, row) {
+                myData[index] = [
+                    row.PERAN1
+                ]
+            });
+            $('#myTable').DataTable({
+                data: myData,
+                "columnDefs": []
+            });
+        });
+    });
+</script>
+<br />
+
+
+<div class="input-group input-group-sm col-md-4">
+    <input type="text" class="form-control">
+    <span class="input-group-btn">
+        <button type="submit" class="btn btn-light btn-flat" value="Create">Simpan</button>
+    </span>
+</div>
+<br /><br />
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                PERAN
+            </th>
+        </tr>
+    </thead>
+</table>

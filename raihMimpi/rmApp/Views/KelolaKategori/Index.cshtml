@@ -1,0 +1,55 @@
+﻿@model IEnumerable<rmApp.Models.KATEGORI>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/buttons.dataTables.min.css">
+<script type="text/javascript" src="~/Scripts/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.getJSON("http://localhost:65067/api/myKategori", function (json) {
+            console.log(json);
+            var myData = [];
+
+            $.each(json, function (index, row) {
+                myData[index] = [
+                    row.NAMA_KATEGORI,
+                    row.ID_KATEGORI
+                ]
+            });
+            $('#myTable').DataTable({
+                data: myData,
+                "columnDefs": [
+                    {
+                        "render": function (data, type, row) {
+                            return '<botton class="btn btn-view" id="' + row[1] + '"><i class="fa fa-search-plus"></i></botton><botton class="btn btn-edit" id="' + row[1] + '" title="Klik Untuk Mengaktifkan Akun"><i class="fa fa-user-plus"></i></botton><botton class="btn btn-delete" id="' + row[1] + '" title="Klik Untuk Non-aktifkan Akun"><i class="fa fa-user-times"></i></botton>';
+                        },
+                        "targets": 1
+                    }
+                ]
+            });
+        });
+    });
+</script>
+<br />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                KATEGORI
+            </th>
+            <th>
+                AKSI
+            </th>
+        </tr>
+    </thead>
+
+</table>

@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Title = "Index";
+    ViewBag.Description = "Home Page";
+}
+
+<div class="row">
+    <section class="content">
+        <div class="col-md-14">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-blue-gradient">
+                        <div class="inner">
+                            <h3>@ViewBag.jumlahProjek</h3>
+
+                            <p>Total Proyek</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-briefcase"></i>
+                        </div>
+                        <a href="@Url.Action("Index", "PROJEK")" class="small-box-footer">
+                            Selanjutnya <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-gray">
+                        <div class="inner">
+                            <h3>@ViewBag.jumlahProjekAktif</h3>
+
+                            <p>Projek Aktif</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-thumbs-o-up"></i>
+                        </div>
+                        <a href="@Url.Action("Index", "PROJEK")" class="small-box-footer">
+                            Selanjutnya <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-blue-gradient">
+                        <div class="inner">
+
+                            <h3><sup>Rp</sup>@ViewBag.jumlahSponsor</h3>
+
+                            <p>Total Sponsor</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <a href="@Url.Action("Index", "SPONSOR")" class="small-box-footer">
+                            Selanjutnya <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-gray">
+                        <div class="inner">
+                            <h3>@ViewBag.jumlahPengguna</h3>
+
+                            <p>Total Pengguna</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <a href="@Url.Action("Index", "PENGGUNAs")" class="small-box-footer">
+                            Selanjutnya <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-blue-gradient">
+                        <div class="inner">
+                            <h3>@ViewBag.jumlahPenggunaAktif</h3>
+
+                            <p>Pengguna Aktif</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-smile-o"></i>
+                        </div>
+                        <a href="@Url.Action("Index", "PENGGUNAs")" class="small-box-footer">
+                            Selanjutnya <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-gray">
+                        <div class="inner">
+                            <h3>@ViewBag.jumlahPencairan</h3>
+
+                            <p title="Total sponsor yang dapat dicarikan">Cairkan Sponsor</p>
+                            
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-bell-o"></i>
+                        </div>
+                        <a href="@Url.Action("Index", "")" class="small-box-footer">
+                            Selanjutnya <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- ./col -->
+
+            </div>
+            <!-- /.row -->
+
+        </div>
+    </section>
+</div>

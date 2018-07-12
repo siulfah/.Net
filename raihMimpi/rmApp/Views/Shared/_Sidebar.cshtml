@@ -1,0 +1,94 @@
+﻿@using WebHelpers.Mvc5
+<aside class="main-sidebar">
+    <section class="sidebar">
+        @* BEGIN Search *@
+        @*<form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search...">
+                </div>
+            </form>*@
+        @* END Search *@
+        @* BEGIN Menu *@
+        <ul class="sidebar-menu" data-widget="tree">
+            @*<li class="header">Menu Admin</li>*@
+            @*<li class="@Url.IsLinkActive("Index", "Home")">
+            <a href="@Url.Action("Index", "Home")"><i class="fa fa-link"></i> <span>Home</span></a>
+        </li>
+        <li class="@Url.IsLinkActive("AnotherLink", "Home")">
+            <a href="@Url.Action("AnotherLink", "Home")"><i class="fa fa-link"></i> <span>Another Link</span></a>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-link"></i> <span>Multilevel</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="#">Link in level 2</a></li>
+                <li><a href="#">Link in level 2</a></li>
+            </ul>
+        </li>*@
+
+            <li class="@Url.IsLinkActive("Index", "Home")">
+                <a href="@Url.Action("Index", "Home")">
+                    <i class="fa fa-home"></i> <span>Beranda</span>
+                </a>
+            </li>
+            <li class="@Url.IsLinkActive("Index", "verifikasiAkun")">
+                <a href="@Url.Action("Index", "verifikasiAkun")">
+                    <i class="fa fa-check-square-o"></i> <span>Verifikasi Akun</span>
+                </a>
+            </li>
+            <li class="@Url.IsLinkActive("Index", "kelolaProyek")">
+                <a href="@Url.Action("Index", "kelolaProyek")">
+                    <i class="fa fa-suitcase"></i> <span>Proyek</span>
+                </a>
+            </li>
+            <li class="@Url.IsLinkActive("Index", "historiSponsor")">
+                <a href="@Url.Action("Index", "historiSponsor")">
+                    <i class="fa fa-child"></i> <span>History Sponsor</span>
+                </a>
+            </li>
+            <li class="@Url.IsLinkActive("Index", "historyPencairanDana")">
+                <a href="@Url.Action("Index", "historyPencairanDana")">
+                    <i class="fa fa-money"></i> <span>History Pencairan Dana</span>
+                </a>
+            </li>
+            <li class="@Url.IsLinkActive("Index", "KelolaPengguna")">
+                <a href="@Url.Action("Index", "KelolaPengguna")">
+                    <i class="fa fa-users"></i> <span>Pengguna</span>
+                </a>
+            </li>
+            <li class="@Url.IsLinkActive("Index", "kelolaPeran")">
+                <a href="@Url.Action("Index","kelolaPeran")">
+                    <i class="fa fa-user"></i> <span>Peran</span>
+                </a>
+            </li>
+            <li class="@Url.IsLinkActive("Index", "KelolaKategori")">
+                <a href="@Url.Action("Index","KelolaKategori")">
+                    <i class="fa fa-tag"></i> <span>Kategori</span>
+                </a>
+            </li>
+            <li class="@Url.IsLinkActive("Index", "KelolaWilayah")">
+                <a href="@Url.Action("Index","KelolaWilayah")">
+                    <i class="fa fa-map-marker"></i> <span>Wilayah</span>
+                </a>
+            </li>
+            @*<li class="treeview">
+            <a href="#">
+                <i class="fa fa-clipboard"></i> <span>Laporan</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="@Url.IsLinkActive("Index", "LaporanSponsor")"><a href="@Url.IsLinkActive("Index", "LaporanSponsor")"><i class="fa fa-file"></i> Laporan Dana Proyek</a></li>
+                <li><a href=".html"><i class="fa fa-file"></i> Laporan Pencairan Sponsor</a></li>
+            </ul>
+        </li>*@
+
+        </ul>
+        @* END Menu *@
+    </section>
+</aside>
