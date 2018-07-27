@@ -1,0 +1,104 @@
+﻿@model IEnumerable<rmApp.Models.PROJEK>
+
+@{
+    ViewBag.Title = "Kelola Proyek";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery.dataTables.min.css">
+<script type="text/javascript" src="~/Scripts/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="~/Content/Theme/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="~/Content/Theme/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="~/Content/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="~/Content/buttons.flash.min.js"></script>
+<script type="text/javascript" src="~/Content/jszip.min.js"></script>
+<script type="text/javascript" src="~/Content/pdfmake.min.js"></script>
+<script type="text/javascript" src="~/Content/vfs_fonts.js"></script>
+<script type="text/javascript" src="~/Content/buttons.html5.min.js"></script>
+<script type="text/javascript" src="~/Content/buttons.print.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.getJSON("http://localhost:65067/api/myProyek", function (json) {
+            console.log(json);
+            var myData = [];
+
+            $.each(json, function (index, row) {
+                myData[index] = [
+                    row.PENGGUNA.NAMA,
+                    row.NAMA_PROYEK,
+                    row.TANGGAL_BERAKHIR,
+                    row.TARGET_DANA,
+                    row.ID_PROYEK
+                ]
+            });
+            $('#myTable').DataTable({
+                data: myData,
+                "columnDefs": [
+                    {
+                        targets: 2,
+                        render: function (data) {
+                            return moment(data).format('Do MMM YYYY');
+                        }
+                    },
+                    {
+                        targets: 3,
+                        render: $.fn.dataTable.render.number('.', ',', 2, 'Rp ')
+                    },
+                    {
+                        "render": function (data, type, row) {
+                            return '<botton class="btn btn-view" id="' + row[4] + '"><i class="fa fa-eye"></i></botton><botton class="btn btn-delete" id="' + row[4] + '" title="Klik Untuk Menghapus Data"><i class="fa fa-trash"></i></botton>';
+                        },
+                        "targets": 4
+                    }
+                ]
+            });
+            
+        });
+    });
+</script>
+
+
+<table id="data" width="100%"></table>
+@*<p>
+    <button class="btn btn-light">@Html.ActionLink("Create New", "Create")</button> <br /><br />
+</p>*@
+<table class="table table-bordered table-striped" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                NAMA PENGGUNA
+            </th>
+            <th>
+                NAMA PROYEK
+            </th>
+            <th>
+                TANGGAL BERAKHIR
+            </th>
+            <th>
+                TARGET DANA
+            </th>
+            <th>AKSI</th>
+        </tr>
+    </thead>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("click", ".btn-view", function () {
+            var id = $(this).attr("id");
+            window.location.href = "@Url.Content("kelolaProyek/Details/")" + id;
+        });
+        $(document).on("click", ".btn-edit", function () {
+            var id = $(this).attr("id");
+            window.location.href = "@Url.Content("kelolaProyek/Edit/")" + id;
+        });
+        $(document).on("click", ".btn-delete", function () {
+            var id = $(this).attr("id");
+            if (confirm("Apakah Anda Yakin untuk Menghapus Data?")) {
+                window.location.href = "@Url.Content("kelolaProyek/Delete/")" + id;
+            }
+            return
+        });
+    });
+
+</script>

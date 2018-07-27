@@ -1,0 +1,79 @@
+﻿@model IEnumerable<rmApp.Models.SPONSOR>
+
+@{
+    ViewBag.Title = "Histori Sponsor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/buttons.dataTables.min.css">
+<script type="text/javascript" src="~/Scripts/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.getJSON("http://localhost:65067/api/mySponsor", function (json) {
+            console.log(json);
+            var myData = [];
+
+            $.each(json, function (index, row) {
+                myData[index] = [
+                    row.CREATE_DATE,
+                    row.PENGGUNA.NAMA,
+                    row.PROJEK.NAMA_PROYEK,
+                    row.JUMLAH_SPONSOR,
+                    row.STATUS
+                ]
+            });
+            $('#myTable').DataTable({
+                data: myData,
+                "columnDefs": [
+                    {
+                        targets: 0,
+                        render: function (data) {
+                            return moment(data).format('Do MMM YYYY');
+                        }
+                    },
+                    {
+                        targets: 3,
+                        render: $.fn.dataTable.render.number('.', ',', 2, 'Rp ')
+                    },
+                    {
+                        "render": function (data, type, row) {
+                            if (row[4] == 1) {
+                                return "Berhasil";
+                            } 
+                        },
+                        "targets": 4
+                    }
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    });
+</script>
+<br />
+<table class="table table-bordered table-striped" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                TANGGAL
+            </th>
+            <th>
+                NAMA SPONSOR
+            </th>
+            <th>
+                PROJEK
+            </th>
+            <th>
+                NOMINAL SPONSOR
+            </th>
+            <th>
+                STATUS
+            </th>
+        </tr>
+    </thead>
+
+</table>

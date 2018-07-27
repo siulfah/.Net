@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="raihMimpiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="FOTO">
+    <Key>
+      <PropertyRef Name="ID_FOTO" />
+    </Key>
+    <Property Name="ID_FOTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PROYEK" Type="int" Nullable="false" />
+    <Property Name="ID_PROGRES_PROYEK" Type="int" />
+    <Property Name="NAMA_FOTO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FOTO" Type="image" Nullable="false" />
+    <Property Name="UTAMA_PROYEK" Type="bit" />
+    <Property Name="UTAMA_PROGRES_PROYEK" Type="bit" />
+    <Property Name="CREATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="KETERANGAN" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="KATEGORI">
+    <Key>
+      <PropertyRef Name="ID_KATEGORI" />
+    </Key>
+    <Property Name="ID_KATEGORI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAMA_KATEGORI" Type="varchar" MaxLength="25" />
+    <Property Name="CREATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="KETERANGAN" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="KOMENTAR">
+    <Key>
+      <PropertyRef Name="ID_KOMENTAR" />
+    </Key>
+    <Property Name="ID_KOMENTAR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PENGGUNA" Type="int" />
+    <Property Name="ID_PROGRES_PROYEK" Type="int" />
+    <Property Name="ID_PROYEK" Type="int" />
+    <Property Name="ISI_KOMENTAR" Type="varchar" MaxLength="1" />
+    <Property Name="CREATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="KETERANGAN" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="LOGIN">
+    <Key>
+      <PropertyRef Name="ID_LOGIN" />
+    </Key>
+    <Property Name="ID_LOGIN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PERAN" Type="int" Nullable="false" />
+    <Property Name="USERNAME" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="STATUS" Type="bit" />
+    <Property Name="CREATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="KETERANGAN" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="PENCAIRANDANA">
+    <Key>
+      <PropertyRef Name="ID_PENCAIRAN_DANA" />
+    </Key>
+    <Property Name="ID_PENCAIRAN_DANA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PROYEK" Type="int" Nullable="false" />
+    <Property Name="ID_PENGGUNA" Type="int" />
+    <Property Name="NAMA_KEGIATAN" Type="varchar" MaxLength="250" />
+    <Property Name="JUMLAH" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="NAMA_PENCAIR" Type="nchar" MaxLength="10" />
+    <Property Name="NO_REKENING" Type="varchar" MaxLength="50" />
+    <Property Name="STATUS" Type="bit" />
+    <Property Name="CREATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="KETERANGAN" Type="nchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="PENGGUNA">
+    <Key>
+      <PropertyRef Name="ID_PENGGUNA" />
+    </Key>
+    <Property Name="ID_PENGGUNA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_LOGIN" Type="int" />
+    <Property Name="NAMA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TELEPON" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="STATUS" Type="bit" />
+    <Property Name="KTP" Type="image" />
+    <Property Name="BIOGRAFI" Type="varchar" MaxLength="3250" />
+    <Property Name="FOTO_PROFILE" Type="image" />
+    <Property Name="VERIFIKASI" Type="image" />
+    <Property Name="UPDATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="CREATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="KETERANGAN" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="PERAN">
+    <Key>
+      <PropertyRef Name="ID_PERAN" />
+    </Key>
+    <Property Name="ID_PERAN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PERAN" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CREATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="KETERANGAN" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="PROGRESPROJEK">
+    <Key>
+      <PropertyRef Name="ID_PROGRES_PROYEK" />
+    </Key>
+    <Property Name="ID_PROGRES_PROYEK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PROYEK" Type="int" Nullable="false" />
+    <Property Name="JUDUL_PROGRES_PROYEK" Type="varchar" MaxLength="1" />
+    <Property Name="DESKRIPSI_LENGKAP" Type="varchar" MaxLength="1" />
+    <Property Name="SUKA" Type="int" />
+    <Property Name="CREATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="KETERANGAN" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="PROJEK">
+    <Key>
+      <PropertyRef Name="ID_PROYEK" />
+    </Key>
+    <Property Name="ID_PROYEK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PENGGUNA" Type="int" Nullable="false" />
+    <Property Name="ID_KATEGORI" Type="int" Nullable="false" />
+    <Property Name="ID_WILAYAH" Type="int" Nullable="false" />
+    <Property Name="NAMA_PROYEK" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DESKRIPSI_SINGKAT" Type="varchar" MaxLength="300" />
+    <Property Name="DESKRIPSI_LENGKAP" Type="varchar(max)" />
+    <Property Name="LINK" Type="varchar" MaxLength="100" />
+    <Property Name="STATUS_PROYEK" Type="bit" />
+    <Property Name="TANGGAL_BERAKHIR" Type="date" />
+    <Property Name="TARGET_DANA" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="FITUR" Type="bit" />
+    <Property Name="SUKA" Type="int" />
+    <Property Name="CREATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="KOMISI_FLAT" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="KOMISI_PERSEN" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="TOTAL_DANA" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="SISA_DANA" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="KETERANGAN" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="RELATIONSHIP_12">
+    <Key>
+      <PropertyRef Name="ID_KATEGORI" />
+      <PropertyRef Name="ID_PROYEK" />
+    </Key>
+    <Property Name="ID_KATEGORI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PROYEK" Type="int" Nullable="false" />
+    <Property Name="CREATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="KETERANGAN" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="SPONSOR">
+    <Key>
+      <PropertyRef Name="ID_SPONSOR" />
+    </Key>
+    <Property Name="ID_SPONSOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PROYEK" Type="int" />
+    <Property Name="ID_PENGGUNA" Type="int" Nullable="false" />
+    <Property Name="JUMLAH_SPONSOR" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ID_BANK" Type="int" />
+    <Property Name="CREATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="ANONIM" Type="bit" />
+    <Property Name="KETERANGAN" Type="varchar" MaxLength="255" />
+    <Property Name="STATUS" Type="bit" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="VIDEO">
+    <Key>
+      <PropertyRef Name="ID_VIDEO" />
+    </Key>
+    <Property Name="ID_VIDEO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PROGRES_PROYEK" Type="int" />
+    <Property Name="ID_PROYEK" Type="int" />
+    <Property Name="LINK_VIDEO" Type="varchar" MaxLength="100" />
+    <Property Name="CREATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="KETERANGAN" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="WILAYAH">
+    <Key>
+      <PropertyRef Name="ID_WILAYAH" />
+    </Key>
+    <Property Name="ID_WILAYAH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAMA_WILAYAH" Type="varchar" MaxLength="50" />
+    <Property Name="CREATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="UPDATE_BY" Type="varchar" MaxLength="50" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+    <Property Name="KETERANGAN" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK_FOTO_PROGRESPROJEK">
+    <End Role="PROGRESPROJEK" Type="Self.PROGRESPROJEK" Multiplicity="0..1" />
+    <End Role="FOTO" Type="Self.FOTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROGRESPROJEK">
+        <PropertyRef Name="ID_PROGRES_PROYEK" />
+      </Principal>
+      <Dependent Role="FOTO">
+        <PropertyRef Name="ID_PROGRES_PROYEK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOTO_PROJEK">
+    <End Role="PROJEK" Type="Self.PROJEK" Multiplicity="1" />
+    <End Role="FOTO" Type="Self.FOTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROJEK">
+        <PropertyRef Name="ID_PROYEK" />
+      </Principal>
+      <Dependent Role="FOTO">
+        <PropertyRef Name="ID_PROYEK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KOMENTAR_PENGGUNA">
+    <End Role="PENGGUNA" Type="Self.PENGGUNA" Multiplicity="0..1" />
+    <End Role="KOMENTAR" Type="Self.KOMENTAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PENGGUNA">
+        <PropertyRef Name="ID_PENGGUNA" />
+      </Principal>
+      <Dependent Role="KOMENTAR">
+        <PropertyRef Name="ID_PENGGUNA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KOMENTAR_PROGRESPROJEK">
+    <End Role="PROGRESPROJEK" Type="Self.PROGRESPROJEK" Multiplicity="0..1" />
+    <End Role="KOMENTAR" Type="Self.KOMENTAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROGRESPROJEK">
+        <PropertyRef Name="ID_PROGRES_PROYEK" />
+      </Principal>
+      <Dependent Role="KOMENTAR">
+        <PropertyRef Name="ID_PROGRES_PROYEK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KOMENTAR_PROJEK">
+    <End Role="PROJEK" Type="Self.PROJEK" Multiplicity="0..1" />
+    <End Role="KOMENTAR" Type="Self.KOMENTAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROJEK">
+        <PropertyRef Name="ID_PROYEK" />
+      </Principal>
+      <Dependent Role="KOMENTAR">
+        <PropertyRef Name="ID_PROYEK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOGIN_PERAN1">
+    <End Role="PERAN" Type="Self.PERAN" Multiplicity="1" />
+    <End Role="LOGIN" Type="Self.LOGIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERAN">
+        <PropertyRef Name="ID_PERAN" />
+      </Principal>
+      <Dependent Role="LOGIN">
+        <PropertyRef Name="ID_PERAN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PENCAIRANDANA_PENGGUNA">
+    <End Role="PENGGUNA" Type="Self.PENGGUNA" Multiplicity="1" />
+    <End Role="PENCAIRANDANA" Type="Self.PENCAIRANDANA" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PENGGUNA">
+        <PropertyRef Name="ID_PENGGUNA" />
+      </Principal>
+      <Dependent Role="PENCAIRANDANA">
+        <PropertyRef Name="ID_PENCAIRAN_DANA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PENCAIRANDANA_PROJEK">
+    <End Role="PROJEK" Type="Self.PROJEK" Multiplicity="1" />
+    <End Role="PENCAIRANDANA" Type="Self.PENCAIRANDANA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROJEK">
+        <PropertyRef Name="ID_PROYEK" />
+      </Principal>
+      <Dependent Role="PENCAIRANDANA">
+        <PropertyRef Name="ID_PROYEK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROGRESPROJEK_PROJEK">
+    <End Role="PROJEK" Type="Self.PROJEK" Multiplicity="1" />
+    <End Role="PROGRESPROJEK" Type="Self.PROGRESPROJEK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROJEK">
+        <PropertyRef Name="ID_PROYEK" />
+      </Principal>
+      <Dependent Role="PROGRESPROJEK">
+        <PropertyRef Name="ID_PROYEK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJEK_PENGGUNA">
+    <End Role="PENGGUNA" Type="Self.PENGGUNA" Multiplicity="1" />
+    <End Role="PROJEK" Type="Self.PROJEK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PENGGUNA">
+        <PropertyRef Name="ID_PENGGUNA" />
+      </Principal>
+      <Dependent Role="PROJEK">
+        <PropertyRef Name="ID_PENGGUNA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJEK_WILAYAH">
+    <End Role="WILAYAH" Type="Self.WILAYAH" Multiplicity="1" />
+    <End Role="PROJEK" Type="Self.PROJEK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WILAYAH">
+        <PropertyRef Name="ID_WILAYAH" />
+      </Principal>
+      <Dependent Role="PROJEK">
+        <PropertyRef Name="ID_WILAYAH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RELATIONSHIP_12_PROJEK">
+    <End Role="PROJEK" Type="Self.PROJEK" Multiplicity="1" />
+    <End Role="RELATIONSHIP_12" Type="Self.RELATIONSHIP_12" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROJEK">
+        <PropertyRef Name="ID_PROYEK" />
+      </Principal>
+      <Dependent Role="RELATIONSHIP_12">
+        <PropertyRef Name="ID_PROYEK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RELATIONSHIP_12_TAGKATEGORI">
+    <End Role="KATEGORI" Type="Self.KATEGORI" Multiplicity="1" />
+    <End Role="RELATIONSHIP_12" Type="Self.RELATIONSHIP_12" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KATEGORI">
+        <PropertyRef Name="ID_KATEGORI" />
+      </Principal>
+      <Dependent Role="RELATIONSHIP_12">
+        <PropertyRef Name="ID_KATEGORI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SPONSOR_PENGGUNA">
+    <End Role="PENGGUNA" Type="Self.PENGGUNA" Multiplicity="1" />
+    <End Role="SPONSOR" Type="Self.SPONSOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PENGGUNA">
+        <PropertyRef Name="ID_PENGGUNA" />
+      </Principal>
+      <Dependent Role="SPONSOR">
+        <PropertyRef Name="ID_PENGGUNA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SPONSOR_PROJEK">
+    <End Role="PROJEK" Type="Self.PROJEK" Multiplicity="0..1" />
+    <End Role="SPONSOR" Type="Self.SPONSOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROJEK">
+        <PropertyRef Name="ID_PROYEK" />
+      </Principal>
+      <Dependent Role="SPONSOR">
+        <PropertyRef Name="ID_PROYEK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VIDEO_PROJEK_PROJEK">
+    <End Role="PROGRESPROJEK" Type="Self.PROGRESPROJEK" Multiplicity="0..1" />
+    <End Role="VIDEO" Type="Self.VIDEO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROGRESPROJEK">
+        <PropertyRef Name="ID_PROGRES_PROYEK" />
+      </Principal>
+      <Dependent Role="VIDEO">
+        <PropertyRef Name="ID_PROGRES_PROYEK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VIDEO_PROJEK_PROJEK1">
+    <End Role="PROJEK" Type="Self.PROJEK" Multiplicity="0..1" />
+    <End Role="VIDEO" Type="Self.VIDEO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROJEK">
+        <PropertyRef Name="ID_PROYEK" />
+      </Principal>
+      <Dependent Role="VIDEO">
+        <PropertyRef Name="ID_PROYEK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="raihMimpiModelStoreContainer">
+    <EntitySet Name="FOTO" EntityType="Self.FOTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KATEGORI" EntityType="Self.KATEGORI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KOMENTAR" EntityType="Self.KOMENTAR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PENCAIRANDANA" EntityType="Self.PENCAIRANDANA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PENGGUNA" EntityType="Self.PENGGUNA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PERAN" EntityType="Self.PERAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROGRESPROJEK" EntityType="Self.PROGRESPROJEK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROJEK" EntityType="Self.PROJEK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RELATIONSHIP_12" EntityType="Self.RELATIONSHIP_12" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SPONSOR" EntityType="Self.SPONSOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VIDEO" EntityType="Self.VIDEO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WILAYAH" EntityType="Self.WILAYAH" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_FOTO_PROGRESPROJEK" Association="Self.FK_FOTO_PROGRESPROJEK">
+      <End Role="PROGRESPROJEK" EntitySet="PROGRESPROJEK" />
+      <End Role="FOTO" EntitySet="FOTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOTO_PROJEK" Association="Self.FK_FOTO_PROJEK">
+      <End Role="PROJEK" EntitySet="PROJEK" />
+      <End Role="FOTO" EntitySet="FOTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KOMENTAR_PENGGUNA" Association="Self.FK_KOMENTAR_PENGGUNA">
+      <End Role="PENGGUNA" EntitySet="PENGGUNA" />
+      <End Role="KOMENTAR" EntitySet="KOMENTAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KOMENTAR_PROGRESPROJEK" Association="Self.FK_KOMENTAR_PROGRESPROJEK">
+      <End Role="PROGRESPROJEK" EntitySet="PROGRESPROJEK" />
+      <End Role="KOMENTAR" EntitySet="KOMENTAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KOMENTAR_PROJEK" Association="Self.FK_KOMENTAR_PROJEK">
+      <End Role="PROJEK" EntitySet="PROJEK" />
+      <End Role="KOMENTAR" EntitySet="KOMENTAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOGIN_PERAN1" Association="Self.FK_LOGIN_PERAN1">
+      <End Role="PERAN" EntitySet="PERAN" />
+      <End Role="LOGIN" EntitySet="LOGIN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PENCAIRANDANA_PENGGUNA" Association="Self.FK_PENCAIRANDANA_PENGGUNA">
+      <End Role="PENGGUNA" EntitySet="PENGGUNA" />
+      <End Role="PENCAIRANDANA" EntitySet="PENCAIRANDANA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PENCAIRANDANA_PROJEK" Association="Self.FK_PENCAIRANDANA_PROJEK">
+      <End Role="PROJEK" EntitySet="PROJEK" />
+      <End Role="PENCAIRANDANA" EntitySet="PENCAIRANDANA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROGRESPROJEK_PROJEK" Association="Self.FK_PROGRESPROJEK_PROJEK">
+      <End Role="PROJEK" EntitySet="PROJEK" />
+      <End Role="PROGRESPROJEK" EntitySet="PROGRESPROJEK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJEK_PENGGUNA" Association="Self.FK_PROJEK_PENGGUNA">
+      <End Role="PENGGUNA" EntitySet="PENGGUNA" />
+      <End Role="PROJEK" EntitySet="PROJEK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJEK_WILAYAH" Association="Self.FK_PROJEK_WILAYAH">
+      <End Role="WILAYAH" EntitySet="WILAYAH" />
+      <End Role="PROJEK" EntitySet="PROJEK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RELATIONSHIP_12_PROJEK" Association="Self.FK_RELATIONSHIP_12_PROJEK">
+      <End Role="PROJEK" EntitySet="PROJEK" />
+      <End Role="RELATIONSHIP_12" EntitySet="RELATIONSHIP_12" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RELATIONSHIP_12_TAGKATEGORI" Association="Self.FK_RELATIONSHIP_12_TAGKATEGORI">
+      <End Role="KATEGORI" EntitySet="KATEGORI" />
+      <End Role="RELATIONSHIP_12" EntitySet="RELATIONSHIP_12" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SPONSOR_PENGGUNA" Association="Self.FK_SPONSOR_PENGGUNA">
+      <End Role="PENGGUNA" EntitySet="PENGGUNA" />
+      <End Role="SPONSOR" EntitySet="SPONSOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SPONSOR_PROJEK" Association="Self.FK_SPONSOR_PROJEK">
+      <End Role="PROJEK" EntitySet="PROJEK" />
+      <End Role="SPONSOR" EntitySet="SPONSOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VIDEO_PROJEK_PROJEK" Association="Self.FK_VIDEO_PROJEK_PROJEK">
+      <End Role="PROGRESPROJEK" EntitySet="PROGRESPROJEK" />
+      <End Role="VIDEO" EntitySet="VIDEO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VIDEO_PROJEK_PROJEK1" Association="Self.FK_VIDEO_PROJEK_PROJEK1">
+      <End Role="PROJEK" EntitySet="PROJEK" />
+      <End Role="VIDEO" EntitySet="VIDEO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

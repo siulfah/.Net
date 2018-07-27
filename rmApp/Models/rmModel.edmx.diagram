@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="593ad255bae14c90b4de597e0a0476af" Name="Diagram1">
+        <EntityTypeShape EntityType="raihMimpiModel1.FOTO" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel1.KATEGORI" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel1.KOMENTAR" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel1.LOGIN" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel1.PENCAIRANDANA" Width="1.5" PointX="6" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel1.PENGGUNA" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel1.PERAN" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel1.PROGRESPROJEK" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel1.PROJEK" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel1.RELATIONSHIP_12" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel1.SPONSOR" Width="1.5" PointX="8.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel1.sysdiagrams" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel1.VIDEO" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="raihMimpiModel1.WILAYAH" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="raihMimpiModel1.FK_FOTO_PROGRESPROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_FOTO_PROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_RELATIONSHIP_12_TAGKATEGORI" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_KOMENTAR_PENGGUNA" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_KOMENTAR_PROGRESPROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_KOMENTAR_PROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_LOGIN_PERAN1" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_PENCAIRANDANA_PENGGUNA" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_PENCAIRANDANA_PROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_PROJEK_PENGGUNA" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_SPONSOR_PENGGUNA" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_PROGRESPROJEK_PROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_VIDEO_PROJEK_PROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_PROJEK_WILAYAH" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_RELATIONSHIP_12_PROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_SPONSOR_PROJEK" ManuallyRouted="false" />
+        <AssociationConnector Association="raihMimpiModel1.FK_VIDEO_PROJEK_PROJEK1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="raihMimpiModel1.NOTIFICATION" Width="1.5" PointX="12.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

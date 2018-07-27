@@ -1,0 +1,158 @@
+﻿@model List<rmApp.Models.WILAYAH>
+
+@{
+    ViewBag.Title = "Kelola Data Wilayah";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/buttons.dataTables.min.css">
+<script type="text/javascript" src="~/Scripts/jquery-1.12.4.js">
+<</script>
+<script type="text/javascript"></script>
+<br />
+
+<table class="table" id="maintable">
+    <thead>
+        <tr>
+            <th>Wilayah</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="data-contact-person">
+            <td class="col-sm-4">
+                <input type="text" name="wilayahInput" class="form-control f-name01" />
+            </td>
+            <td>
+                <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Tambah</button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>
+                @*<button type="button" id="btnSubmit" class="btn btn-success btn-md pull-right btn-sm">Simpan</button>*@
+                <button type="button" id="Create" class="btn btn-success btn-simpan">Simpan</button>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+
+
+<section class="content">
+    <div class="box box-default box-header">
+        <div class="col-xs-12">
+            <table class="table table-bordered table-striped" id="myTable">
+                <thead>
+                    <tr>
+                        <th>
+                            WILAYAH
+                        </th>
+                        <th>AKSI</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</section>
+
+<div>
+    @using (Html.BeginForm("Create", "Save", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        if (ViewBag.Message != null)
+        {
+            <div style="border:solid 1px green">
+                @ViewBag.Message
+            </div>
+        }
+        <div>
+            <a href="#" id="addNew">Add New</a>
+        </div>
+        @*<table id="dataTable" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <th>Wilayah</th>
+                <th></th>
+            </tr>
+            @if (Model != null && Model.Count > 0)
+            {
+                int j = 0;
+                foreach (var i in Model)
+                {
+                    <tr style="border:1px solid black">
+                        <td>@Html.TextBoxFor(a => a[j].ContactName)</td>
+                        <td>@Html.TextBoxFor(a => a[j].ContactNo)</td>
+                        <td>
+                            @if (j > 0)
+                            {
+                                <a href="#" class="remove">Remove</a>
+                            }
+                        </td>
+                    </tr>
+                    j++;
+                }
+            }
+        </table>*@
+        <input type="submit" value="Create" />
+    }
+</div>
+
+
+<script language="javascript">
+
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        @*$(document).on("click", ".btn-view", function () {
+            var id = $(this).attr("id");
+            window.location.href = "@Url.Content("KelolaWilayah/Details/")" + id;
+        });*@
+        $(document).on("click", ".btn-edit", function () {
+            var id = $(this).attr("id");
+            window.location.href = "@Url.Content("KelolaWilayah/Edit/")" + id;
+        });
+        $(document).on("click", ".btn-delete", function () {
+            var id = $(this).attr("id");
+            if (confirm("Apakah Anda Yakin untuk Menghapus Data?")) {
+                window.location.href = "@Url.Content("KelolaWilayah/Delete/")" + id;
+            }
+            return
+        });
+    });
+</script>
+
+            <script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("click", ".btn-simpan", function () {
+            var id = $(this).attr("id");
+            if (confirm("Apakah Anda Yakin untuk Menyimpan Data?")) {
+                window.location.href = "@Url.Content("KelolaWilayah/Create/")" + id;
+            }
+            return
+        });
+    });
+            </script>
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(document).on("click", ".classAdd", function () { //
+                        
+                        var contactdiv = '<tr class="data-contact-person">' +
+                            '<td><input type="text" name="wilayahInput" class="form-control f-name01" /></td>' +
+                            '<td><button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Tambah</button>' +
+                            '&nbsp;&nbsp;<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-xs">Hapus</button></td>' +
+                            '</tr>';
+                        $('#maintable').append(contactdiv); // Adding these controls to Main table class
+                    });
+                });
+                $(document).on("click", ".deleteContact", function () {
+                    $(this).closest("tr").remove(); // closest used to remove the respective 'tr' in which I have my controls
+                });
+            </script>

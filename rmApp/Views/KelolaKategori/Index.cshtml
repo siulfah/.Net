@@ -1,0 +1,116 @@
+﻿@model IEnumerable<rmApp.Models.KATEGORI>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Theme/buttons.dataTables.min.css">
+<script type="text/javascript" src="~/Scripts/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.getJSON("http://localhost:65067/api/myKategori", function (json) {
+            console.log(json);
+            var myData = [];
+
+            $.each(json, function (index, row) {
+                myData[index] = [
+                    row.NAMA_KATEGORI,
+                    row.ID_KATEGORI
+                ]
+            });
+            $('#myTable').DataTable({
+                data: myData,
+                "columnDefs": [
+                    {
+                        "render": function (data, type, row) {
+                            return '<botton class="btn btn-edit" id="' + row[1] + '" title="Klik Untuk Mengubah Data Kategori"><i class="fa fa-edit"></i></botton><botton class="btn btn-delete" id="' + row[1] + '" title="Klik Untuk Menghapus Data Kategori"><i class="fa fa-trash"></i></botton>';
+                        },
+                        "targets": 1
+                    }
+                ]
+            });
+        });
+    });
+</script>
+<br />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table" id="maintable">
+    <thead>
+        <tr>
+            <th>Kategori</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="data-contact-person">
+            <td class="col-sm-4">
+                <input type="text" name="kategori" class="form-control f-name01" />
+            </td>
+            <td>
+                <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Tambah</button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>
+                <button type="button" id="btnSubmit" class="btn btn-success btn-md pull-right btn-sm">Simpan</button>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+
+<table class="table table-bordered table-striped" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                KATEGORI
+            </th>
+            <th>
+                AKSI
+            </th>
+        </tr>
+    </thead>
+
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        @*$(document).on("click", ".btn-view", function () {
+            var id = $(this).attr("id");
+            window.location.href = "@Url.Content("KelolaWilayah/Details/")" + id;
+        });*@
+        $(document).on("click", ".btn-edit", function () {
+            var id = $(this).attr("id");
+            window.location.href = "@Url.Content("KelolaKategori/Edit/")" + id;
+        });
+        $(document).on("click", ".btn-delete", function () {
+            var id = $(this).attr("id");
+            if (confirm("Apakah Anda Yakin untuk Menghapus Data?")) {
+                window.location.href = "@Url.Content("KelolaKategori/Delete/")" + id;
+            }
+            return
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("click", ".classAdd", function () { //
+            var rowCount = $('.data-contact-person').length + 1;
+            var contactdiv = '<tr class="data-contact-person">' +
+                '<td><input type="text" name="kategori" class="form-control f-name01" /></td>' +
+                '<td><button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Tambah</button>' +
+                '<button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-xs">Hapus</button></td>' +
+                '</tr>';
+            $('#maintable').append(contactdiv); // Adding these controls to Main table class
+        });
+    });
+    $(document).on("click", ".deleteContact", function () {
+        $(this).closest("tr").remove(); // closest used to remove the respective 'tr' in which I have my controls
+    });
+</script>  

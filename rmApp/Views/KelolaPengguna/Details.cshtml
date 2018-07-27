@@ -1,0 +1,77 @@
+﻿@model rmApp.Models.PENGGUNA
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="box box-primary">
+    <!-- /.box-header -->
+    <div class="box-body">
+        <strong>NAMA</strong>
+        <p class="text-muted">
+            @Model.NAMA
+        </p>
+        <hr>
+        <strong>TELEPON</strong>
+        <p class="text-muted">
+            @Model.TELEPON
+        </p>
+        <hr>
+        <strong>STATUS</strong>
+        <p class="text-muted">
+            @Model.STATUS
+        </p>
+        <hr>
+        <strong>KTP</strong>
+        <p class="text-muted">
+            @Model.KTP
+        </p>
+        <hr>
+        <strong>BIOGRAFI</strong>
+        <p class="text-muted">
+            @Model.BIOGRAFI
+        </p>
+        <hr>
+        <strong>FOTO PROFIL</strong>
+        <p class="text-muted">
+            @Model.FOTO_PROFILE
+        </p>
+        <hr>
+        <strong>VERIFIKASI</strong>
+        <p class="text-muted">
+            @Model.VERIFIKASI
+        </p>
+        <hr>
+        <strong>CREATE BY</strong>
+        <p class="text-muted">
+            @Model.CREATE_BY
+        </p>
+        <hr>
+        <strong>CREATE DATE</strong>
+        <p class="text-muted">
+            @Model.CREATE_DATE
+        </p>
+        <hr>
+        <strong>UPDATE BY</strong>
+        <p class="text-muted">
+            @Model.UPDATE_BY
+        </p>
+        <hr>
+        <strong>UPDATE DATE</strong>
+        <p class="text-muted">
+            @Model.UPDATE_DATE
+        </p>
+        <hr>
+        <strong>KETERANGAN</strong>
+        <p class="text-muted">
+            @Model.KETERANGAN
+        </p>
+        <hr>
+    </div>
+</div>
+<p>
+   <@Html.ActionLink("Back to List", "Index")>
+</p>

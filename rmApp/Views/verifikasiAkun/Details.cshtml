@@ -1,0 +1,70 @@
+﻿@model rmApp.Models.LOGIN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- About Me Box -->
+<div class="box box-primary">
+    <!-- /.box-header -->
+    <div class="box-body">
+        <strong>USERNAME </strong>
+        <p class="text-muted">
+            @Model.USERNAME
+        </p>
+        <hr>
+        <strong>EMAIL </strong>
+        <p class="text-muted">
+            @Model.EMAIL
+        </p>
+        <hr>
+        <strong>PASSWORD </strong>
+        <p>
+            @Model.PASSWORD
+        </p>
+        <hr>
+        <strong>PERAN</strong>
+        <p>
+
+            @Model.PERAN.PERAN1
+
+        </p>
+        <hr>
+        <strong>STATUS</strong>
+        <p>
+            @Model.STATUS
+        </p>
+        <hr>
+        <strong>CREATE BY</strong>
+        <p>
+            @Model.CREATE_BY
+        </p>
+        <hr>
+        <strong>CREATE DATE </strong>
+        <p>
+            @Model.CREATE_DATE
+        </p>
+        <hr>
+        <strong>UPDATE BY</strong>
+        <p>
+            @Model.UPDATE_BY
+        </p>
+        <hr>
+        <strong>UPDATE DATE</strong>
+        <p>
+                @Model.UPDATE_DATE
+        </p>
+        <hr>
+        <strong>KETERANGAN</strong>
+        <p>
+                @Model.KETERANGAN
+        </p>
+    </div>
+    <!-- /.box-body -->
+</div>
+<!-- /.box -->
+
+<p>
+     < @Html.ActionLink("Back to List", "Index") >
+</p>
